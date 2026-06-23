@@ -1,27 +1,17 @@
-@import "tailwindcss";
-@plugin "@tailwindcss/typography";
+/* The page is rendered with Notion's own self-contained stylesheets
+   (linked in layout.tsx). No reset/framework CSS here, so the captured
+   markup renders exactly as it did on the original site.
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+   Notion's CSS pins html/body to `height:100vh; overflow:hidden` because
+   the live app scrolls inside an internal `.notion-scroller` element that
+   isn't part of the captured content. Without that wrapper the page can't
+   scroll, so we let the document itself scroll naturally. */
+html.notion-html,
+body.notion-body {
+  height: auto !important;
+  overflow: visible !important;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+body.notion-body {
+  min-height: 100vh;
 }

@@ -1,20 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Build in Sydney",
-  description: "A guide for startup founders building in Sydney",
+  description:
+    "A guide to the Sydney startup and tech ecosystem — how it works, where the energy is, and how to plug in.",
 };
 
 export default function RootLayout({
@@ -23,12 +13,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="en" className="notion-html notion-light-theme notion-front-page">
+      <head>
+        {/* Notion's own self-contained stylesheets, mirrored locally. */}
+        <link rel="stylesheet" href="/_assets/77281-2f413b88f4946a95.css" />
+        <link rel="stylesheet" href="/_assets/main-3263723a73dde5aa.css" />
+        <link rel="stylesheet" href="/print.e3e8b7a8.css" media="print" />
+      </head>
+      <body className="notion-body">{children}</body>
     </html>
   );
 }
